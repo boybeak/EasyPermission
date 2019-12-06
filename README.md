@@ -1,0 +1,2 @@
+# EasyPermission
+Get permission dynamic
