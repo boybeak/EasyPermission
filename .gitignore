@@ -90,13 +90,8 @@ lint/tmp/
 app/.gitignore
 app/libs/
 app/proguard-rules.pro
-build.gradle
 easy/.gitignore
 easy/consumer-rules.pro
 easy/libs/
 easy/proguard-rules.pro
-gradle.properties
 gradle/
-gradlew
-gradlew.bat
-settings.gradle
