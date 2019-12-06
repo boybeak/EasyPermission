@@ -90,13 +90,11 @@ lint/tmp/
 app/.gitignore
 app/libs/
 app/proguard-rules.pro
-app/src/
 build.gradle
 easy/.gitignore
 easy/consumer-rules.pro
 easy/libs/
 easy/proguard-rules.pro
-easy/src/
 gradle.properties
 gradle/
 gradlew
