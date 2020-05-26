@@ -3,7 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'com.jfrog.bintray'
-apply plugin: 'org.jetbrains.dokka-android'
+apply plugin: 'org.jetbrains.dokka'
+//apply plugin: 'org.jetbrains.dokka-android'
 apply plugin: 'maven-publish'
 
 android {
@@ -42,6 +43,17 @@ dependencies {
 dokka {
     outputFormat = 'html'
     outputDirectory = '$buildDir/javadoc'
+
+    configuration {
+        externalDocumentationLink {
+            noJdkLink = true
+            noStdlibLink = true
+            noAndroidSdkLink = true
+
+            url = new URL("https://whatever")
+            packageListUrl = new URL("file:///${rootDir}/package-list")
+        }
+    }
 }
 
 apply from: 'deploy-easy.gradle'

@@ -59,6 +59,9 @@ public class EasyPermission {
     }
 
     public static EasyPermission ask(List<String> permissions) {
+        if (permissions.isEmpty()) {
+            throw new IllegalArgumentException("permission list should not be empty");
+        }
         EasyPermission ph = new EasyPermission();
         ph.permissions.addAll(permissions);
         return ph;
