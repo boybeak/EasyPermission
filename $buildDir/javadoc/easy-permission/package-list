@@ -1,5 +1,7 @@
 $dokka.format:html
 $dokka.linkExtension:html
+$dokka.location:com.github.boybeak.easypermission.ext$isPermissionsGranted(android.content.Context, kotlin.Array((kotlin.String)))com.github.boybeak.easypermission.ext/android.content.-context/is-permissions-granted.html
+$dokka.location:com.github.boybeak.easypermission.ext$isPermissionsGranted(android.content.Context, kotlin.collections.List((kotlin.String)))com.github.boybeak.easypermission.ext/android.content.-context/is-permissions-granted.html
 $dokka.location:com.github.boybeak.easypermission.ext$withPermission(android.content.Context, kotlin.String, kotlin.Function1((kotlin.collections.List((kotlin.String)), kotlin.Unit)))com.github.boybeak.easypermission.ext/android.content.-context/with-permission.html
 $dokka.location:com.github.boybeak.easypermission.ext$withPermission(android.content.Context, kotlin.String, kotlin.Function1((kotlin.collections.List((kotlin.String)), kotlin.Unit)), kotlin.Function2((kotlin.String, kotlin.Boolean, kotlin.Unit)))com.github.boybeak.easypermission.ext/android.content.-context/with-permission.html
 $dokka.location:com.github.boybeak.easypermission.ext$withPermission(androidx.fragment.app.Fragment, kotlin.String, kotlin.Function1((kotlin.collections.List((kotlin.String)), kotlin.Unit)))com.github.boybeak.easypermission.ext/androidx.fragment.app.-fragment/with-permission.html

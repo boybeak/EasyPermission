@@ -1,6 +1,7 @@
 package com.github.boybeak.easypermission.ext
 
 import android.content.Context
+import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
 import com.github.boybeak.easypermission.Callback
 import com.github.boybeak.easypermission.EasyPermission
@@ -95,4 +96,12 @@ fun Fragment.withPermissions(
     onDenied: ((permission: String, shouldShowRequestPermissionRationale: Boolean) -> Unit)?
 ) {
     requireContext().withPermissions(*permissions, onGranted = onGranted, onDenied = onDenied)
+}
+
+fun Context.isPermissionsGranted(vararg permissions: String): Boolean {
+    return EasyPermission.isPermissionGranted(this, *permissions)
+}
+
+fun Context.isPermissionsGranted(permissions: List<String>): Boolean {
+    return EasyPermission.isPermissionGranted(this, permissions)
 }
