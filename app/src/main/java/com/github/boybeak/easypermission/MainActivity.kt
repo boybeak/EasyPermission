@@ -37,52 +37,19 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun ask(v: View) {
-        clickListener.onClick(v)
-        this.withPermissions(
-            requestCode = 1,
-            permissions = *arrayOf(
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.CAMERA,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ),
-            onGranted = { permissions ->
+    @RequestPermissions(
+        permissions = [
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        ]
+    )
+    fun getLocation() {
+        //TODO("GET LOCATION")
+    }
 
-            },
-            onDenied = { permission, requestCode, neverAsk ->
-
-            }
-        )
-        EasyPermission.ask(
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.CAMERA,
-            Manifest.permission.ACCESS_FINE_LOCATION
-        ).go(this, 127, object : Callback {
-            override fun onGranted(permissions: MutableList<String>, requestCode: Int) {
-                TODO("Do sth.")
-            }
-
-            override fun onDenied(permission: String, requestCode: Int, neverAsk: Boolean) {
-                TODO("Permission denied.")
-            }
-        })
-        /*EasyPermission.ask(
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.CAMERA,
-            Manifest.permission.ACCESS_FINE_LOCATION
-        ).go(this, object : Callback {
-            override fun onGranted(permissions: MutableList<String>) {
-                Toast.makeText(this@MainActivity, "Granted", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onDenied(
-                permission: String,
-                shouldShowRequestPermissionRationale: Boolean
-            ) {
-                Toast.makeText(this@MainActivity, "Denied $permission", Toast.LENGTH_SHORT).show()
-            }
-
-        })*/
+    @OnPermissionDenied
+    fun onGetLocationDenied(permission: String, requestCode: Int, neverAsk: Boolean) {
+        //TODO("Permission denied")
     }
 
 }

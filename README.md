@@ -2,8 +2,22 @@
 ## Install
 
 ```groovy
-implementation 'com.github.boybeak:easy-permission:newest_version'
+// root project build.gradle
+buildscript {
+  allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+	}
+}
 ```
+
+```groovy
+implementation 'com.github.boybeak:easy-permission:${newest_version}'
+```
+
+
 
 ## Usage
 
@@ -51,9 +65,70 @@ this.withPermissions(
 
 
 
-**Example 3**
+**Example 3 ** - *Recommend*
+
+This example base on `AspectJ` - An **AOP** library for Java.
+
+> What is AOP ?
+>
+> 
 
 Use `easy-permission-aspect` to get dynamic permission with **@RequestPermissions** and **@OnPermissionDenied**.
 
+```groovy
+// root project build.gradle
+buildscript {
+  dependencies {
+    classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10'
+  }
+}
+```
 
+`com.github.boybeak:easy-permission-aspect:`[ ![Download](https://api.bintray.com/packages/boybeak/nulldreams/easy-permission-aspect/images/download.svg) ](https://bintray.com/boybeak/nulldreams/easy-permission-aspect/_latestVersion)
+
+```groovy
+// app or some other module's build.gradle
+dependencies {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation 'com.github.boybeak:easy-permission-aspect:${new_version}'
+	implementation 'org.aspectj:aspectjrt:1.9.5'
+}
+```
+
+
+
+- In **Context**, **Fragment** or **View**
+
+```kotlin
+@RequestPermissions(
+  permissions = [
+    Manifest.permission.ACCESS_FINE_LOCATION,
+    Manifest.permission.ACCESS_COARSE_LOCATION
+  ],
+  requestCode = REQUEST_CODE
+)
+fun getLocation() {
+  //TODO("GET LOCATION")
+}
+
+@OnPermissionDenied
+fun onGetLocationDenied(permission: String, requestCode: Int, neverAsk: Boolean) {
+  //TODO("Permission denied")
+}
+```
+
+- If the target method not in **Context**, **Fragment** or **View**, you must pass an **Context** parameter to the method
+
+```kotlin
+@RequestPermissions(
+  permissions = [
+    Manifest.permission.ACCESS_FINE_LOCATION,
+    Manifest.permission.ACCESS_COARSE_LOCATION
+  ],
+  requestCode = REQUEST_CODE
+)
+fun getLocation(context: Context) {
+  //TODO("GET LOCATION")
+}
+```
 
