@@ -18,7 +18,7 @@ fun Context.withPermission(
     requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     permission: String,
     onGranted: (permissions: List<String>) -> Unit,
-    onDenied: ((permission: String, neverAsk: Boolean) -> Unit)?
+    onDenied: ((permission: String, requestCode: Int, neverAsk: Boolean) -> Unit)?
 ) {
     withPermissions(requestCode, permission, onGranted = onGranted, onDenied = onDenied)
 }
@@ -35,7 +35,7 @@ fun Context.withPermissions(
     requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     vararg permissions: String,
     onGranted: (permissions: List<String>) -> Unit,
-    onDenied: ((permission: String, neverAsk: Boolean) -> Unit)?
+    onDenied: ((permission: String, requestCode: Int, neverAsk: Boolean) -> Unit)?
 ) {
     EasyPermission.ask(*permissions).go(this, requestCode, object : Callback {
         override fun onGranted(permissions: MutableList<String>, requestCode: Int) {
@@ -47,7 +47,7 @@ fun Context.withPermissions(
             requestCode: Int,
             neverAsk: Boolean
         ) {
-            onDenied?.invoke(permission, neverAsk)
+            onDenied?.invoke(permission, requestCode, neverAsk)
         }
     })
 }
@@ -64,7 +64,7 @@ fun Context.withPermissionList(
     requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     permissions: List<String>,
     onGranted: (permissions: List<String>) -> Unit,
-    onDenied: ((permission: String, neverAsk: Boolean) -> Unit)?
+    onDenied: ((permission: String, requestCode: Int, neverAsk: Boolean) -> Unit)?
 ) {
 
     EasyPermission.ask(permissions).go(this, requestCode, object : Callback {
@@ -77,7 +77,7 @@ fun Context.withPermissionList(
             requestCode: Int,
             neverAsk: Boolean
         ) {
-            onDenied?.invoke(permission, neverAsk)
+            onDenied?.invoke(permission, requestCode, neverAsk)
         }
     })
 }
@@ -86,7 +86,7 @@ fun Fragment.withPermissionList(
     requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     permissions: List<String>,
     onGranted: (permissions: List<String>) -> Unit,
-    onDenied: ((permission: String, neverAsk: Boolean) -> Unit)?
+    onDenied: ((permission: String, requestCode: Int, neverAsk: Boolean) -> Unit)?
 ) {
     requireContext().withPermissionList(requestCode, permissions, onGranted, onDenied)
 }
@@ -111,7 +111,7 @@ fun Fragment.withPermission(
     requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     permission: String,
     onGranted: (permissions: List<String>) -> Unit,
-    onDenied: ((permission: String, neverAsk: Boolean) -> Unit)?
+    onDenied: ((permission: String, requestCode: Int, neverAsk: Boolean) -> Unit)?
 ) {
     requireContext().withPermission(requestCode, permission, onGranted, onDenied)
 }
@@ -128,7 +128,7 @@ fun Fragment.withPermissions(
     requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     vararg permissions: String,
     onGranted: (permissions: List<String>) -> Unit,
-    onDenied: ((permission: String, neverAsk: Boolean) -> Unit)?
+    onDenied: ((permission: String, requestCode: Int, neverAsk: Boolean) -> Unit)?
 ) {
     requireContext().withPermissions(requestCode, *permissions, onGranted = onGranted, onDenied = onDenied)
 }

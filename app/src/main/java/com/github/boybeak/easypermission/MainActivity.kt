@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity() {
 
         @RequestPermissions(requestCode = 100, permissions = [Manifest.permission.CAMERA])
         private fun showT(context: Context) {
-            Toast.makeText(this@MainActivity, "get permission success $context", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity, "get permission success $context", Toast.LENGTH_SHORT)
+                .show()
         }
 
         @OnPermissionDenied
@@ -38,6 +39,33 @@ class MainActivity : AppCompatActivity() {
 
     fun ask(v: View) {
         clickListener.onClick(v)
+        this.withPermissions(
+            requestCode = 1,
+            permissions = *arrayOf(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.CAMERA,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ),
+            onGranted = { permissions ->
+
+            },
+            onDenied = { permission, requestCode, neverAsk ->
+
+            }
+        )
+        EasyPermission.ask(
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ).go(this, 127, object : Callback {
+            override fun onGranted(permissions: MutableList<String>, requestCode: Int) {
+                TODO("Do sth.")
+            }
+
+            override fun onDenied(permission: String, requestCode: Int, neverAsk: Boolean) {
+                TODO("Permission denied.")
+            }
+        })
         /*EasyPermission.ask(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA,
