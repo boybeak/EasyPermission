@@ -44,6 +44,7 @@ class PermissionAgentActivity : Activity() {
 
     override fun onDestroy() {
         super.onDestroy()
+
         var result = true
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             grantResults!!.forEachIndexed { index, i ->

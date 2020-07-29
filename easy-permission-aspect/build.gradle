@@ -1,6 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'org.jetbrains.dokka'
@@ -8,6 +6,7 @@ apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 29
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 21
@@ -16,7 +15,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -29,17 +28,17 @@ android {
     libraryVariants.all {
         generateBuildConfigProvider?.get()?.enabled = false
     }
-
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.1.0'
-
+    implementation 'com.github.boybeak:easy-permission:2.0.0'
+    implementation 'org.aspectj:aspectjrt:1.9.5'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
 }
 
 dokka {
@@ -58,4 +57,4 @@ dokka {
     }
 }
 
-apply from: 'deploy-easy-permission.gradle'
+apply from: 'deploy-easy-permission-aspect.gradle'

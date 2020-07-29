@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         @OnPermissionDenied
-        fun onDenied(permission: String, requestCode: Int, neverAsk: Boolean) {
-            Toast.makeText(this@MainActivity, "$permission $requestCode $neverAsk", Toast.LENGTH_SHORT).show()
+        private fun onDenied(permission: String, requestCode: Int, neverAsk: Boolean) {
+            Toast.makeText(this@MainActivity, "$permission $requestCode", Toast.LENGTH_SHORT).show()
         }
 
         override fun onClick(v: View?) {

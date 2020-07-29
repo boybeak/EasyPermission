@@ -6,10 +6,8 @@ import androidx.fragment.app.Fragment
 import com.github.boybeak.easypermission.Callback
 import com.github.boybeak.easypermission.EasyPermission
 
-private const val REQUEST_CODE_DEFAULT = 127
-
 fun Context.withPermission(
-    requestCode: Int = REQUEST_CODE_DEFAULT,
+    requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     permission: String,
     onGranted: (permissions: List<String>) -> Unit
 ) {
@@ -17,7 +15,7 @@ fun Context.withPermission(
 }
 
 fun Context.withPermission(
-    requestCode: Int = REQUEST_CODE_DEFAULT,
+    requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     permission: String,
     onGranted: (permissions: List<String>) -> Unit,
     onDenied: ((permission: String, neverAsk: Boolean) -> Unit)?
@@ -26,7 +24,7 @@ fun Context.withPermission(
 }
 
 fun Context.withPermissions(
-    requestCode: Int = REQUEST_CODE_DEFAULT,
+    requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     vararg permissions: String,
     onGranted: (permissions: List<String>) -> Unit
 ) {
@@ -34,7 +32,7 @@ fun Context.withPermissions(
 }
 
 fun Context.withPermissions(
-    requestCode: Int = REQUEST_CODE_DEFAULT,
+    requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     vararg permissions: String,
     onGranted: (permissions: List<String>) -> Unit,
     onDenied: ((permission: String, neverAsk: Boolean) -> Unit)?
@@ -55,7 +53,7 @@ fun Context.withPermissions(
 }
 
 fun Context.withPermissionList(
-    requestCode: Int = REQUEST_CODE_DEFAULT,
+    requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     permissions: List<String>,
     onGranted: (permissions: List<String>) -> Unit
 ) {
@@ -63,7 +61,7 @@ fun Context.withPermissionList(
 }
 
 fun Context.withPermissionList(
-    requestCode: Int = REQUEST_CODE_DEFAULT,
+    requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     permissions: List<String>,
     onGranted: (permissions: List<String>) -> Unit,
     onDenied: ((permission: String, neverAsk: Boolean) -> Unit)?
@@ -85,7 +83,7 @@ fun Context.withPermissionList(
 }
 
 fun Fragment.withPermissionList(
-    requestCode: Int = REQUEST_CODE_DEFAULT,
+    requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     permissions: List<String>,
     onGranted: (permissions: List<String>) -> Unit,
     onDenied: ((permission: String, neverAsk: Boolean) -> Unit)?
@@ -94,7 +92,7 @@ fun Fragment.withPermissionList(
 }
 
 fun Fragment.withPermissionList(
-    requestCode: Int = REQUEST_CODE_DEFAULT,
+    requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     permissions: List<String>,
     onGranted: (permissions: List<String>) -> Unit
 ) {
@@ -102,7 +100,7 @@ fun Fragment.withPermissionList(
 }
 
 fun Fragment.withPermission(
-    requestCode: Int = REQUEST_CODE_DEFAULT,
+    requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     permission: String,
     onGranted: (permissions: List<String>) -> Unit
 ) {
@@ -110,7 +108,7 @@ fun Fragment.withPermission(
 }
 
 fun Fragment.withPermission(
-    requestCode: Int = REQUEST_CODE_DEFAULT,
+    requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     permission: String,
     onGranted: (permissions: List<String>) -> Unit,
     onDenied: ((permission: String, neverAsk: Boolean) -> Unit)?
@@ -119,7 +117,7 @@ fun Fragment.withPermission(
 }
 
 fun Fragment.withPermissions(
-    requestCode: Int = REQUEST_CODE_DEFAULT,
+    requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     vararg permissions: String,
     onGranted: (permissions: List<String>) -> Unit
 ) {
@@ -127,7 +125,7 @@ fun Fragment.withPermissions(
 }
 
 fun Fragment.withPermissions(
-    requestCode: Int = REQUEST_CODE_DEFAULT,
+    requestCode: Int = EasyPermission.REQUEST_CODE_DEFAULT,
     vararg permissions: String,
     onGranted: (permissions: List<String>) -> Unit,
     onDenied: ((permission: String, neverAsk: Boolean) -> Unit)?

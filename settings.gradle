@@ -1,2 +1,3 @@
+include ':easy-permission-aspect'
 include ':app', ':easy-permission'
 rootProject.name='EasyPermission'

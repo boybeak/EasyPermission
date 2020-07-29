@@ -18,6 +18,7 @@ public class EasyPermission {
     private static final String KEY_ = "com.github.boybeak.easypermission.";
     public static final String KEY_ID = KEY_ + "ID", KEY_PERMISSION_LIST = KEY_ + "PERMISSION_LIST",
             KEY_REQUEST_CODE = KEY_ + "REQUEST_CODE";
+    public static final int REQUEST_CODE_DEFAULT = 127;
 
     private static Map<String, Callback> sKeyCallbackMap = new HashMap<>();
 
@@ -72,6 +73,10 @@ public class EasyPermission {
 
     private EasyPermission() {
 
+    }
+
+    public void go(Context context, Callback callback) {
+        go(context, REQUEST_CODE_DEFAULT, callback);
     }
 
     public void go(Context context, int requestCode, Callback callback) {

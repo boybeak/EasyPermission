@@ -18,6 +18,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.List;
 
 @Aspect
@@ -91,9 +92,16 @@ public class PermissionAspect {
         Method method = getMethodFor(obj, OnPermissionDenied.class);
         if (method != null) {
             try {
+                Class<?>[] parameters = method.getParameterTypes();
+                if (parameters.length != 3 || parameters[0] != String.class || parameters[1] != int.class || parameters[2] != boolean.class) {
+                    throw new IllegalArgumentException("The method parameters must be (String permission, int requestCode, boolean neverAsk)");
+                }
+
+                method.setAccessible(true);
                 method.invoke(obj, permission, requestCode, neverAsk);
+                method.setAccessible(false);
             } catch (IllegalAccessException | InvocationTargetException e) {
-                throw new IllegalStateException(e.getMessage());
+                e.printStackTrace();
             }
         }
     }
