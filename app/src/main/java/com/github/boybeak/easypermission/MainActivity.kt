@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     private val clickListener = object : View.OnClickListener {
 
         @RequestPermissions(requestCode = 100, permissions = [Manifest.permission.CAMERA])
-        fun showT(context: Context) {
+        private fun showT(context: Context) {
             Toast.makeText(this@MainActivity, "get permission success $context", Toast.LENGTH_SHORT).show()
         }
 
