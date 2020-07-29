@@ -8,7 +8,7 @@ buildscript {
     repositories {
         google()
         jcenter()
-    }
+		}
 	}
 }
 ```
@@ -65,7 +65,7 @@ this.withPermissions(
 
 
 
-**Example 3 ** - *Recommend*
+**Example 3** - *Recommend*
 
 This example base on `AspectJ` - An **AOP** library for Java.
 
