@@ -8,8 +8,8 @@ buildscript {
     repositories {
         google()
         jcenter()
-		}
-	}
+    }
+  }
 }
 ```
 
@@ -25,7 +25,7 @@ implementation 'com.github.boybeak:easy-permission:${newest_version}'
 
 ```kotlin
 EasyPermission.ask(
-		Manifest.permission.WRITE_EXTERNAL_STORAGE,
+	Manifest.permission.WRITE_EXTERNAL_STORAGE,
   	Manifest.permission.CAMERA,
   	Manifest.permission.ACCESS_FINE_LOCATION
 ).go(this, REQUEST_CODE, object : Callback {
@@ -91,7 +91,7 @@ buildscript {
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   implementation 'com.github.boybeak:easy-permission-aspect:${new_version}'
-	implementation 'org.aspectj:aspectjrt:1.9.5'
+  implementation 'org.aspectj:aspectjrt:1.9.5'
 }
 ```
 
