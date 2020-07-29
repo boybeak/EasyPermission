@@ -89,7 +89,6 @@ lint/tmp/
 .idea/runConfigurations.xml
 app/.gitignore
 app/libs/
-app/proguard-rules.pro
 easy/.gitignore
 easy/consumer-rules.pro
 easy/libs/

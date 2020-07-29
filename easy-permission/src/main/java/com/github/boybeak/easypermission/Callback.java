@@ -5,6 +5,6 @@ import androidx.annotation.NonNull;
 import java.util.List;
 
 public interface Callback {
-    void onGranted(@NonNull List<String> permissions);
-    void onDenied(@NonNull String permission, boolean shouldShowRequestPermissionRationale);
+    void onGranted(@NonNull List<String> permissions, int requestCode);
+    void onDenied(@NonNull String permission, int requestCode, boolean neverAsk);
 }

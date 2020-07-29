@@ -20,15 +20,16 @@ class PermissionAgentActivity : Activity() {
         setContentView(View(this))
 
         id = intent.getStringExtra(EasyPermission.KEY_ID)
+        requestCode = intent.getIntExtra(EasyPermission.KEY_REQUEST_CODE, 127)
         permissions = intent.getStringArrayListExtra(EasyPermission.KEY_PERMISSION_LIST)
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             finish()
         } else {
-            val permissionArray = Array<String>(permissions!!.size) {
+            val permissionArray = Array(permissions!!.size) {
                 permissions!![it]
             }
-            ActivityCompat.requestPermissions(this, permissionArray, 100)
+            ActivityCompat.requestPermissions(this, permissionArray, requestCode)
         }
     }
 
@@ -49,14 +50,14 @@ class PermissionAgentActivity : Activity() {
                 result = result and (i == PackageManager.PERMISSION_GRANTED)
                 if (!result) {
                     val permission = permissions!![index]
-                    EasyPermission.actionDenied(id, permission,
-                        ActivityCompat.shouldShowRequestPermissionRationale(this, permission))
+                    val neverAsk = !ActivityCompat.shouldShowRequestPermissionRationale(this, permission)
+                    EasyPermission.actionDenied(id, requestCode, permission, neverAsk)
                     return
                 }
             }
         }
         if (result) {
-            EasyPermission.actionGranted(id, permissions)
+            EasyPermission.actionGranted(id, requestCode, permissions)
         }
     }
 

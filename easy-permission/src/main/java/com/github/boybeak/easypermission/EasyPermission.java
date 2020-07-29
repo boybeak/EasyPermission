@@ -15,23 +15,24 @@ import java.util.UUID;
 
 public class EasyPermission {
 
-    private static final String KEY_ = "com.github.boybeak.permission.";
-    public static final String KEY_ID = KEY_ + "ID", KEY_PERMISSION_LIST = KEY_ + "PERMISSION_LIST";
+    private static final String KEY_ = "com.github.boybeak.easypermission.";
+    public static final String KEY_ID = KEY_ + "ID", KEY_PERMISSION_LIST = KEY_ + "PERMISSION_LIST",
+            KEY_REQUEST_CODE = KEY_ + "REQUEST_CODE";
 
     private static Map<String, Callback> sKeyCallbackMap = new HashMap<>();
 
-    static void actionGranted(String id, List<String> permissions) {
+    static void actionGranted(String id, int requestCode, List<String> permissions) {
         Callback callback = sKeyCallbackMap.get(id);
         if (callback != null) {
-            callback.onGranted(permissions);
+            callback.onGranted(permissions, requestCode);
         }
         releaseCallback(id);
     }
 
-    static void actionDenied(String id, String permission, boolean shouldShowRequestPermissionRationale) {
+    static void actionDenied(String id, int requestCode, String permission, boolean neverAsk) {
         Callback callback = sKeyCallbackMap.get(id);
         if (callback != null) {
-            callback.onDenied(permission, shouldShowRequestPermissionRationale);
+            callback.onDenied(permission, requestCode, neverAsk);
         }
         releaseCallback(id);
     }
@@ -73,18 +74,19 @@ public class EasyPermission {
 
     }
 
-    public void go(Context context, Callback callback) {
+    public void go(Context context, int requestCode, Callback callback) {
 
         if (EasyPermission.isPermissionGranted(context, permissions)) {
-            callback.onGranted(permissions);
+            callback.onGranted(permissions, requestCode);
             return;
         }
 
         String id = UUID.randomUUID().toString();
 
-        Intent it = new Intent(context, PermissionAgentActivity.class);
-        it.putExtra(KEY_ID, id);
-        it.putStringArrayListExtra(KEY_PERMISSION_LIST, permissions);
+        Intent it = new Intent(context, PermissionAgentActivity.class)
+                .putExtra(KEY_ID, id)
+                .putStringArrayListExtra(KEY_PERMISSION_LIST, permissions)
+                .putExtra(KEY_REQUEST_CODE, requestCode);
         context.startActivity(it);
 
         sKeyCallbackMap.put(id, callback);
