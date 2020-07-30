@@ -88,6 +88,10 @@ buildscript {
 
 ```groovy
 // app or some other module's build.gradle
+apply plugin: 'android-aspectjx'
+
+// ... some other stuff
+
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   implementation 'com.github.boybeak:easy-permission-aspect:${new_version}'
