@@ -33,7 +33,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.github.boybeak:easy-permission:2.0.1'
+    implementation 'com.github.boybeak:easy-permission:2.0.2'
     implementation 'org.aspectj:aspectjrt:1.9.5'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

@@ -67,7 +67,7 @@ this.withPermissions(
 
 **Example 3** - *Recommend*
 
-This example base on `AspectJ` - An **AOP** library for Java.
+This example base on [`AspectJ`](https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx) - An **AOP** library for Java.
 
 > What is [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming) ?
 >

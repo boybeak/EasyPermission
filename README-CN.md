@@ -65,7 +65,7 @@ this.withPermissions(
 
 **实例3** - *推荐使用*
 
-这个实例基于 `AspectJ` - 一个 java的**AOP** 库.
+这个实例基于 [`AspectJ`](https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx) - 一个 java的**AOP** 库.
 
 > 什么是 [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming) ?
 >
