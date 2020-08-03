@@ -1,7 +1,5 @@
 # EasyPermission[ ![Download](https://api.bintray.com/packages/boybeak/nulldreams/easy-permission/images/download.svg) ](https://bintray.com/boybeak/nulldreams/easy-permission/_latestVersion)
-[中文README](https://github.com/boybeak/EasyPermission/blob/master/README-CN.md)
-
-## Install
+## 安装
 
 ```groovy
 // root project build.gradle
@@ -19,9 +17,9 @@ buildscript {
 implementation 'com.github.boybeak:easy-permission:${newest_version}'
 ```
 
-## Usage
+## 使用
 
-**Example 1**
+**实例1**
 
 ```kotlin
 EasyPermission.ask(
@@ -41,9 +39,9 @@ EasyPermission.ask(
 
 
 
-**Example 2**
+**实例2**
 
-If you use `kotlin`, you can use this way.
+如果你使用 `kotlin`来开发程序, 你可以使用这种方式.
 
 ```kotlin
 //this may be Context or Fragment
@@ -65,17 +63,17 @@ this.withPermissions(
 
 
 
-**Example 3** - *Recommend*
+**实例3** - *推荐使用*
 
-This example base on `AspectJ` - An **AOP** library for Java.
+这个实例基于 `AspectJ` - 一个 java的**AOP** 库.
 
-> What is [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming) ?
+> 什么是 [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming) ?
 >
-> Related with: [ASM](https://asm.ow2.io/), modify code in .class file.
+> 相关: [ASM](https://asm.ow2.io/), 直接在字节码中修改逻辑.
 >
-> Different with: [APT](https://medium.com/@mauryahyd/what-is-android-apt-1fca2c4fc95a), generate new class.
+> 区别于: [APT](https://medium.com/@mauryahyd/what-is-android-apt-1fca2c4fc95a), 生成新的类.
 
-Use `easy-permission-aspect` to get dynamic permission with **@RequestPermissions** and **@OnPermissionDenied**.
+借助 `easy-permission-aspect` 库，通过该库中提供的 **@RequestPermissions** 和 **@OnPermissionDenied**来获取动态权限.
 
 ```groovy
 // root project build.gradle
@@ -116,7 +114,7 @@ dependencies {
 
 
 
-- In **Context**, **Fragment** or **View**
+- 在 **Context**, **Fragment** 或者 **View** 类中
 
 ```kotlin
 @RequestPermissions(
@@ -136,7 +134,7 @@ fun onGetLocationDenied(permission: String, requestCode: Int, neverAsk: Boolean)
 }
 ```
 
-- If the target method not in **Context**, **Fragment** or **View**, you must pass an **Context** parameter to the method
+- 如果你使用动态权限的方法没有在 **Context**, **Fragment** 或者 **View**类中, 你必须在方法的参数中，传入一个 **Context** 对象作为参数.
 
 ```kotlin
 @RequestPermissions(
