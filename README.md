@@ -17,8 +17,6 @@ buildscript {
 implementation 'com.github.boybeak:easy-permission:${newest_version}'
 ```
 
-
-
 ## Usage
 
 **Example 1**
@@ -69,9 +67,11 @@ this.withPermissions(
 
 This example base on `AspectJ` - An **AOP** library for Java.
 
-> What is AOP ?
+> What is [AOP](https://en.wikipedia.org/wiki/Aspect-oriented_programming) ?
 >
-> 
+> Related with: [ASM](https://asm.ow2.io/), modify code in .class file.
+>
+> Different with: [APT](https://medium.com/@mauryahyd/what-is-android-apt-1fca2c4fc95a), generate new class.
 
 Use `easy-permission-aspect` to get dynamic permission with **@RequestPermissions** and **@OnPermissionDenied**.
 
@@ -83,6 +83,19 @@ buildscript {
   }
 }
 ```
+
+
+
+proguard-rules.pro
+
+```groovy
+-keepclassmembers class * {
+    @com.github.boybeak.easypermission.aspect.OnPermissionDenied <methods>;
+    @com.github.boybeak.easypermission.aspect.RequestPermissions <methods>;
+}
+```
+
+
 
 `com.github.boybeak:easy-permission-aspect:`[ ![Download](https://api.bintray.com/packages/boybeak/nulldreams/easy-permission-aspect/images/download.svg) ](https://bintray.com/boybeak/nulldreams/easy-permission-aspect/_latestVersion)
 
