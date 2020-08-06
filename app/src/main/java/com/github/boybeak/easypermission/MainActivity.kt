@@ -13,24 +13,6 @@ import com.github.boybeak.easypermission.ext.withPermissions
 
 class MainActivity : AppCompatActivity() {
 
-    private val clickListener = object : View.OnClickListener {
-
-        @RequestPermissions(requestCode = 100, permissions = [Manifest.permission.CAMERA])
-        private fun showT(context: Context) {
-            Toast.makeText(this@MainActivity, "get permission success $context", Toast.LENGTH_SHORT)
-                .show()
-        }
-
-        @OnPermissionDenied
-        private fun onDenied(permission: String, requestCode: Int, neverAsk: Boolean) {
-            Toast.makeText(this@MainActivity, "$permission $requestCode", Toast.LENGTH_SHORT).show()
-        }
-
-        override fun onClick(v: View?) {
-            showT(v!!.context)
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -43,8 +25,8 @@ class MainActivity : AppCompatActivity() {
             Manifest.permission.ACCESS_COARSE_LOCATION
         ]
     )
-    fun getLocation() {
-        //TODO("GET LOCATION")
+    fun getLocation(view: View) {
+        Toast.makeText(this, classLoader::class.java.name, Toast.LENGTH_SHORT).show()
     }
 
     @OnPermissionDenied

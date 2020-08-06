@@ -11,6 +11,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Ask for storage, camera and location permissions"
-        android:onClick="ask"
+        android:onClick="getLocation"
         />
 </FrameLayout>
