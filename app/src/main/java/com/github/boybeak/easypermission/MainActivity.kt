@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     @OnPermissionDenied
     fun onGetLocationDenied(permission: String, requestCode: Int, neverAsk: Boolean) {
-        //TODO("Permission denied")
+        Toast.makeText(this, "$permission $requestCode $neverAsk", Toast.LENGTH_SHORT).show()
     }
 
 }
