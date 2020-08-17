@@ -6,11 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <Button
-        android:id="@+id/ask"
+        android:id="@+id/get"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Ask for storage, camera and location permissions"
-        android:onClick="getLocation"
-        />
+        android:onClick="getPermission"
+        android:text="Get permission"/>
 </FrameLayout>

@@ -10,7 +10,7 @@ import androidx.core.app.ActivityCompat
 class PermissionAgentActivity : Activity() {
 
     private var id: String? = null
-    private var permissions: ArrayList<String>? = null
+    private var permissions: Array<String>? = null
 
     private var requestCode: Int = 0
     private var grantResults: IntArray? = null
@@ -21,15 +21,15 @@ class PermissionAgentActivity : Activity() {
 
         id = intent.getStringExtra(EasyPermission.KEY_ID)
         requestCode = intent.getIntExtra(EasyPermission.KEY_REQUEST_CODE, 127)
-        permissions = intent.getStringArrayListExtra(EasyPermission.KEY_PERMISSION_LIST)
+        permissions = intent.getStringArrayListExtra(EasyPermission.KEY_PERMISSION_LIST)!!.toTypedArray()
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            grantResults = IntArray(permissions!!.size) {
+                ActivityCompat.checkSelfPermission(this, permissions!![it])
+            }
             finish()
         } else {
-            val permissionArray = Array(permissions!!.size) {
-                permissions!![it]
-            }
-            ActivityCompat.requestPermissions(this, permissionArray, requestCode)
+            ActivityCompat.requestPermissions(this, permissions!!, requestCode)
         }
     }
 
@@ -44,8 +44,8 @@ class PermissionAgentActivity : Activity() {
 
     override fun onDestroy() {
         super.onDestroy()
-
-        var result = true
+        EasyPermission.actionPermissionResult(id, this, requestCode, permissions!!, grantResults!!)
+        /*var result = true
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             grantResults!!.forEachIndexed { index, i ->
                 result = result and (i == PackageManager.PERMISSION_GRANTED)
@@ -59,7 +59,7 @@ class PermissionAgentActivity : Activity() {
         }
         if (result) {
             EasyPermission.actionGranted(id, requestCode, permissions)
-        }
+        }*/
     }
 
 }
