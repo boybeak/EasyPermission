@@ -2,9 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'org.jetbrains.dokka'
-apply plugin: 'maven-publish'
+apply from: '../publish-script.gradle'
 
 android {
     compileSdkVersion 29
@@ -41,21 +39,3 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
-
-dokka {
-    outputFormat = 'html'
-    outputDirectory = '$buildDir/javadoc'
-
-    configuration {
-        externalDocumentationLink {
-            noJdkLink = true
-            noStdlibLink = true
-            noAndroidSdkLink = true
-
-            url = new URL("https://whatever")
-            packageListUrl = new URL("file:///${rootDir}/package-list")
-        }
-    }
-}
-
-apply from: 'deploy-easy-permission.gradle'

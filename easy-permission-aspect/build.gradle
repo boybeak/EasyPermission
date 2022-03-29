@@ -1,9 +1,5 @@
 apply plugin: 'com.android.library'
 
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'org.jetbrains.dokka'
-apply plugin: 'maven-publish'
-
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -33,28 +29,11 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.github.boybeak:easy-permission:2.1.0'
-    implementation 'org.aspectj:aspectjrt:1.9.5'
+    implementation project(path: ':easy-permission')
+//    implementation 'com.github.boybeak:easy-permission:2.1.0'
+//    implementation 'org.aspectj:aspectjrt:1.9.5'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
 }
-
-dokka {
-    outputFormat = 'html'
-    outputDirectory = '$buildDir/javadoc'
-
-    configuration {
-        externalDocumentationLink {
-            noJdkLink = true
-            noStdlibLink = true
-            noAndroidSdkLink = true
-
-            url = new URL("https://whatever")
-            packageListUrl = new URL("file:///${rootDir}/package-list")
-        }
-    }
-}
-
-apply from: 'deploy-easy-permission-aspect.gradle'

@@ -10,10 +10,10 @@ import androidx.fragment.app.Fragment;
 import com.github.boybeak.easypermission.Callback;
 import com.github.boybeak.easypermission.EasyPermission;
 
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
+//import org.aspectj.lang.ProceedingJoinPoint;
+//import org.aspectj.lang.annotation.Around;
+//import org.aspectj.lang.annotation.Aspect;
+//import org.aspectj.lang.annotation.Pointcut;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
@@ -21,14 +21,14 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.List;
 
-@Aspect
+//@Aspect
 public class PermissionAspect {
 
     private static final String TAG = PermissionAspect.class.getSimpleName();
 
     private static final String pointcutExpression = "execution(@com.github.boybeak.easypermission.aspect.RequestPermissions * *(..)) && @annotation(permissions)";
 
-    @Pointcut(value = pointcutExpression, argNames = "permissions")
+    /*@Pointcut(value = pointcutExpression, argNames = "permissions")
     public void requestPermissions(RequestPermissions permissions) {
 
     }
@@ -113,6 +113,6 @@ public class PermissionAspect {
             }
         }
         return null;
-    }
+    }*/
 
 }
