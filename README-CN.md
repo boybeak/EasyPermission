@@ -1,4 +1,4 @@
-# EasyPermission[ ![Download](https://img.shields.io/badge/easy--permission-2.1.0-blue)
+# EasyPermission ![Download](https://img.shields.io/badge/easy--permission-2.1.0-blue)
 ## 安装
 
 ```groovy
