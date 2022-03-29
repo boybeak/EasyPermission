@@ -1,4 +1,4 @@
-# EasyPermission[ ![Download](https://api.bintray.com/packages/boybeak/nulldreams/easy-permission/images/download.svg) ](https://bintray.com/boybeak/nulldreams/easy-permission/_latestVersion)
+# EasyPermission[ ![Download](https://img.shields.io/badge/easy--permission-2.1.0-blue)
 ## 安装
 
 ```groovy
